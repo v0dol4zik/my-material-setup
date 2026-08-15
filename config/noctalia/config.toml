@@ -14,7 +14,7 @@ order = [ "main" ]
 position = "top"
 enabled = true
 auto_hide = false
-reserve_space = false
+reserve_space = true
 layer = "top"
 
 # Compact floating Gruvbox bar.
@@ -79,7 +79,7 @@ scale = 0.82
 background_opacity = 0.82
 layer = "overlay"
 offset_x = 12
-offset_y = 54
+offset_y = 8
 max_visible = 3
 collapse_on_dismiss = true
 show_app_name = false
