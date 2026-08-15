@@ -77,6 +77,7 @@ hide_when_no_unread = true
 [notification]
 scale = 0.82
 background_opacity = 0.82
+layer = "overlay"
 offset_x = 12
 offset_y = 8
 max_visible = 3
