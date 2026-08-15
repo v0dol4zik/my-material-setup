@@ -1,0 +1,13 @@
+config_version = 12
+
+[theme]
+builtin = "Gruvbox"
+
+    [theme.templates]
+    builtin_ids = [ "btop", "gtk3", "gtk4", "kitty", "niri", "qt" ]
+
+[wallpaper.default]
+path = "@HOME@/.local/share/backgrounds/gruvbox-boxes.png"
+
+[wallpaper.last]
+path = "@HOME@/.local/share/backgrounds/gruvbox-boxes.png"
