@@ -8,7 +8,7 @@ readonly CONFIG_HOME="${XDG_CONFIG_HOME:-${TARGET_HOME}/.config}"
 readonly STATE_HOME="${XDG_STATE_HOME:-${TARGET_HOME}/.local/state}"
 readonly DATA_HOME="${XDG_DATA_HOME:-${TARGET_HOME}/.local/share}"
 readonly RUN_ID="$(date +%Y%m%d-%H%M%S)"
-readonly BACKUP_ROOT="${STATE_HOME}/gruvbox-noctalia-dotfiles/backups/${RUN_ID}"
+readonly BACKUP_ROOT="${STATE_HOME}/catppuccin-noctalia-dotfiles/backups/${RUN_ID}"
 readonly BIBATA_VERSION="v2.0.7"
 readonly BIBATA_ARCHIVE="Bibata-Modern-Classic.tar.xz"
 readonly BIBATA_URL="https://github.com/ful1e5/Bibata_Cursor/releases/download/${BIBATA_VERSION}/${BIBATA_ARCHIVE}"
@@ -28,11 +28,11 @@ EOF
 }
 
 log() {
-    printf '[gruvbox-dots] %s\n' "$*"
+    printf '[catppuccin-dots] %s\n' "$*"
 }
 
 die() {
-    printf '[gruvbox-dots] error: %s\n' "$*" >&2
+    printf '[catppuccin-dots] error: %s\n' "$*" >&2
     exit 1
 }
 
@@ -46,7 +46,6 @@ for arg in "$@"; do
 done
 
 [[ -d "${SCRIPT_DIR}/config" ]] || die "config directory is missing"
-[[ -f "${SCRIPT_DIR}/assets/gruvbox-boxes.png" ]] || die "wallpaper asset is missing"
 [[ "$TARGET_HOME" = /* && "$TARGET_HOME" != "/" ]] || die "unsafe HOME: $TARGET_HOME"
 
 run() {
@@ -166,7 +165,6 @@ for app in niri noctalia kitty fish fastfetch btop gtk-3.0 gtk-4.0; do
 done
 
 install_file "${SCRIPT_DIR}/home/vimrc" "${TARGET_HOME}/.vimrc"
-install_file "${SCRIPT_DIR}/assets/gruvbox-boxes.png" "${DATA_HOME}/backgrounds/gruvbox-boxes.png"
 install_cursor
 install_noctalia_state
 

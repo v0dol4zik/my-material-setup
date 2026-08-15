@@ -1,8 +1,8 @@
-# Gruvbox Noctalia Dotfiles
+# Catppuccin Noctalia Dotfiles
 
 [English](README.md) | **Русский**
 
-Тёплый минималистичный Gruvbox rice для CachyOS/Arch Linux на базе Niri и
+Компактный Catppuccin rice для CachyOS/Arch Linux на базе Niri и
 Noctalia 5. Конфиги собраны так, чтобы интерфейс оставался компактным,
 полупрозрачным и пригодным для ежедневной работы.
 
@@ -10,13 +10,13 @@ Noctalia 5. Конфиги собраны так, чтобы интерфейс 
 
 - Niri: скругление окон `11`, blur, отключённый верхний левый hot corner и
   готовые бинды для Noctalia.
-- Noctalia: плавающая панель, Gruvbox, прозрачность `0.75`, компактные
+- Noctalia: плавающая панель, Catppuccin, прозрачность `0.75`, компактные
   уведомления и OSD, glass Control Center и idle-lock.
-- Kitty: Gruvbox, прозрачность `0.75`, padding `12` и практичные настройки
+- Kitty: Catppuccin, прозрачность `0.75`, padding `12` и практичные настройки
   scrollback/clipboard.
 - Fish + Pure, Fastfetch, Btop, Vim и GTK в общей палитре.
 - Курсор Bibata Modern Classic размером `20`.
-- Обои `gruvbox-boxes.png`.
+- Установщик не меняет текущие обои.
 
 ## Требования
 
@@ -57,7 +57,7 @@ fastfetch btop vim papirus-icon-theme adw-gtk-theme
 копирует их в:
 
 ```text
-~/.local/state/gruvbox-noctalia-dotfiles/backups/<дата-время>/
+~/.local/state/catppuccin-noctalia-dotfiles/backups/<дата-время>/
 ```
 
 После установки завершите текущую графическую сессию и войдите в Niri снова.
@@ -82,7 +82,7 @@ fastfetch btop vim papirus-icon-theme adw-gtk-theme
 
 ```text
 .
-├── assets/                 # обои
+├── assets/                 # дополнительные изображения (не устанавливаются)
 ├── config/                 # содержимое ~/.config
 ├── home/vimrc              # устанавливается как ~/.vimrc
 ├── state/noctalia/         # переносимый шаблон темы и обоев
@@ -121,6 +121,5 @@ niri msg outputs
 `Bibata-Modern-Classic.tar.xz` версии `v2.0.7` напрямую со страницы релизов
 проекта и распаковывает его в `~/.icons`.
 
-Обои `gruvbox-boxes.png` добавлены пользователем. Перед публичным
-распространением репозитория убедитесь, что лицензия исходного изображения
-разрешает публикацию, либо замените файл собственными обоями.
+Установщик не заменяет обои. После установки выберите любые понравившиеся
+обои Catppuccin через Noctalia.

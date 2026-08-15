@@ -17,7 +17,7 @@ auto_hide = false
 reserve_space = true
 layer = "top"
 
-# Compact floating Gruvbox bar.
+# Compact floating Catppuccin bar.
 thickness = 34
 background_opacity = 0.75
 border = "outline"
@@ -85,7 +85,7 @@ collapse_on_dismiss = true
 show_app_name = false
 show_actions = true
 
-# Unified shell surfaces: Gruvbox glass, consistent outlines and radius.
+# Unified shell surfaces: Catppuccin glass, consistent outlines and radius.
 [shell.panel]
 transparency_mode = "glass"
 borders = true

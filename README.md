@@ -1,8 +1,8 @@
-# Gruvbox Noctalia Dotfiles
+# Catppuccin Noctalia Dotfiles
 
 **English** | [Русский](README.ru.md)
 
-A warm, minimalist Gruvbox rice for CachyOS/Arch Linux built around Niri and
+A compact Catppuccin rice for CachyOS/Arch Linux built around Niri and
 Noctalia 5. The configuration is designed to stay compact, translucent, and
 practical for everyday use.
 
@@ -10,13 +10,13 @@ practical for everyday use.
 
 - Niri: `11` px window rounding, blur, disabled top-left hot corner, and
   ready-to-use Noctalia keybindings.
-- Noctalia: floating panel, Gruvbox colors, `0.75` opacity, compact
+- Noctalia: floating panel, Catppuccin colors, `0.75` opacity, compact
   notifications and OSDs, a glass-style Control Center, and idle lock.
-- Kitty: Gruvbox colors, `0.75` opacity, `12` px padding, and practical
+- Kitty: Catppuccin colors, `0.75` opacity, `12` px padding, and practical
   scrollback and clipboard settings.
 - Fish with Pure, Fastfetch, Btop, Vim, and GTK using a shared palette.
 - Bibata Modern Classic cursor at size `20`.
-- `gruvbox-boxes.png` wallpaper.
+- The installer leaves your current wallpaper untouched.
 
 ## Requirements
 
@@ -57,7 +57,7 @@ The installer never permanently deletes existing configuration files. Before
 overwriting them, it copies them to:
 
 ```text
-~/.local/state/gruvbox-noctalia-dotfiles/backups/<date-time>/
+~/.local/state/catppuccin-noctalia-dotfiles/backups/<date-time>/
 ```
 
 After installation, log out of the current graphical session and log back
@@ -83,7 +83,7 @@ The complete list is available in `config/niri/cfg/keybinds.kdl`.
 
 ```text
 .
-├── assets/                 # wallpaper
+├── assets/                 # optional artwork (not installed)
 ├── config/                 # contents of ~/.config
 ├── home/vimrc              # installed as ~/.vimrc
 ├── state/noctalia/         # portable theme and wallpaper template
@@ -122,6 +122,5 @@ repository. The installer downloads the official
 `Bibata-Modern-Classic.tar.xz` Linux release archive for version `v2.0.7`
 directly from the project's release page and extracts it into `~/.icons`.
 
-The `gruvbox-boxes.png` wallpaper was provided by the user. Before publishing
-or redistributing this repository, make sure the original image license permits
-redistribution, or replace it with your own wallpaper.
+The installer does not replace your wallpaper. Select any Catppuccin wallpaper
+you like through Noctalia after installation.

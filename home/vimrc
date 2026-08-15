@@ -1,4 +1,4 @@
-" Lean Gruvbox-like Vim setup with no plugin dependency.
+" Lean Catppuccin Vim setup with no plugin dependency.
 set background=dark
 set termguicolors
 set number
@@ -17,24 +17,24 @@ set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 
-highlight Normal       guifg=#ebdbb2 guibg=#282828
-highlight NormalNC     guifg=#d5c4a1 guibg=#282828
+highlight Normal       guifg=#cdd6f4 guibg=#1e1e2e
+highlight NormalNC     guifg=#bac2de guibg=#1e1e2e
 highlight CursorLine                  guibg=#32302f
-highlight LineNr       guifg=#665c54 guibg=#282828
-highlight CursorLineNr guifg=#fabd2f guibg=#32302f gui=bold
-highlight Comment      guifg=#928374 gui=italic
-highlight Constant     guifg=#d3869b
-highlight String       guifg=#b8bb26
-highlight Identifier   guifg=#83a598
-highlight Statement    guifg=#fb4934 gui=bold
-highlight PreProc      guifg=#fe8019
-highlight Type         guifg=#fabd2f
-highlight Special      guifg=#8ec07c
-highlight Visual       guifg=#282828 guibg=#83a598
-highlight Search       guifg=#282828 guibg=#fabd2f
-highlight StatusLine   guifg=#282828 guibg=#b8bb26 gui=bold
-highlight StatusLineNC guifg=#a89984 guibg=#3c3836
-highlight VertSplit    guifg=#504945 guibg=#282828
-highlight ErrorMsg     guifg=#fb4934 guibg=#282828 gui=bold
-highlight Pmenu        guifg=#ebdbb2 guibg=#3c3836
-highlight PmenuSel     guifg=#282828 guibg=#b8bb26 gui=bold
+highlight LineNr       guifg=#45475a guibg=#1e1e2e
+highlight CursorLineNr guifg=#f9e2af guibg=#32302f gui=bold
+highlight Comment      guifg=#6c7086 gui=italic
+highlight Constant     guifg=#cba6f7
+highlight String       guifg=#a6e3a1
+highlight Identifier   guifg=#89b4fa
+highlight Statement    guifg=#f38ba8 gui=bold
+highlight PreProc      guifg=#fab387
+highlight Type         guifg=#f9e2af
+highlight Special      guifg=#94e2d5
+highlight Visual       guifg=#1e1e2e guibg=#89b4fa
+highlight Search       guifg=#1e1e2e guibg=#f9e2af
+highlight StatusLine   guifg=#1e1e2e guibg=#a6e3a1 gui=bold
+highlight StatusLineNC guifg=#bac2de guibg=#313244
+highlight VertSplit    guifg=#313244 guibg=#1e1e2e
+highlight ErrorMsg     guifg=#f38ba8 guibg=#1e1e2e gui=bold
+highlight Pmenu        guifg=#cdd6f4 guibg=#313244
+highlight PmenuSel     guifg=#1e1e2e guibg=#a6e3a1 gui=bold
