@@ -14,7 +14,7 @@ order = [ "main" ]
 position = "top"
 enabled = true
 auto_hide = false
-reserve_space = true
+reserve_space = false
 layer = "top"
 
 # Compact floating Gruvbox bar.

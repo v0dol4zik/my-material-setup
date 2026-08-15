@@ -10,5 +10,9 @@
             proportion 0.66667
         }
 
-        struts {}
+        // Keep tiled windows below the 34 px bar and its 8 + 4 px margins.
+        // Fullscreen ignores layout struts, so overlay OSDs anchor to the screen edge.
+        struts {
+            top 46
+        }
     }
