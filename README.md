@@ -1,123 +1,127 @@
 # Gruvbox Noctalia Dotfiles
 
-Тёплый минималистичный Gruvbox rice для CachyOS/Arch Linux на базе Niri и
-Noctalia 5. Конфиги собраны так, чтобы интерфейс оставался компактным,
-полупрозрачным и пригодным для ежедневной работы.
+**English** | [Русский](README.ru.md)
 
-## Что внутри
+A warm, minimalist Gruvbox rice for CachyOS/Arch Linux built around Niri and
+Noctalia 5. The configuration is designed to stay compact, translucent, and
+practical for everyday use.
 
-- Niri: скругление окон `11`, blur, отключённый верхний левый hot corner и
-  готовые бинды для Noctalia.
-- Noctalia: плавающая панель, Gruvbox, прозрачность `0.75`, компактные
-  уведомления и OSD, glass Control Center и idle-lock.
-- Kitty: Gruvbox, прозрачность `0.75`, padding `12` и практичные настройки
-  scrollback/clipboard.
-- Fish + Pure, Fastfetch, Btop, Vim и GTK в общей палитре.
-- Курсор Bibata Modern Classic размером `20`.
-- Обои `gruvbox-boxes.png`.
+## What's included
 
-## Требования
+- Niri: `11` px window rounding, blur, disabled top-left hot corner, and
+  ready-to-use Noctalia keybindings.
+- Noctalia: floating panel, Gruvbox colors, `0.75` opacity, compact
+  notifications and OSDs, a glass-style Control Center, and idle lock.
+- Kitty: Gruvbox colors, `0.75` opacity, `12` px padding, and practical
+  scrollback and clipboard settings.
+- Fish with Pure, Fastfetch, Btop, Vim, and GTK using a shared palette.
+- Bibata Modern Classic cursor at size `20`.
+- `gruvbox-boxes.png` wallpaper.
 
-Основной целевой набор пакетов:
+## Requirements
+
+The primary package set is:
 
 ```text
 niri noctalia kitty fish fish-pure-prompt fish-autopair
 fastfetch btop vim papirus-icon-theme adw-gtk-theme
 ```
 
-Для загрузки и распаковки курсора также нужны `curl` и `tar` (`tar` входит в
-базовую систему Arch).
+The cursor download and extraction also require `curl` and `tar` (`tar` is
+part of the Arch base system).
 
-`noctalia` доступна в репозиториях CachyOS. На чистом Arch её может
-потребоваться установить отдельно до запуска скрипта.
+`noctalia` is available in the CachyOS repositories. On plain Arch Linux, you
+may need to install it separately before running the script.
 
-## Установка
+## Installation
 
-Сначала посмотрите план установки без изменений:
+Preview the installation plan without changing anything:
 
 ```bash
 ./install.sh --dry-run
 ```
 
-Установить только конфиги:
+Install configuration files only:
 
 ```bash
 ./install.sh
 ```
 
-Установить пакеты через `pacman`, затем конфиги:
+Install packages with `pacman`, then install the configuration files:
 
 ```bash
 ./install.sh --install-packages
 ```
 
-Установщик не удаляет существующие конфиги безвозвратно. Перед перезаписью он
-копирует их в:
+The installer never permanently deletes existing configuration files. Before
+overwriting them, it copies them to:
 
 ```text
-~/.local/state/gruvbox-noctalia-dotfiles/backups/<дата-время>/
+~/.local/state/gruvbox-noctalia-dotfiles/backups/<date-time>/
 ```
 
-После установки завершите текущую графическую сессию и войдите в Niri снова.
+After installation, log out of the current graphical session and log back
+into Niri.
 
-## Основные бинды Niri
+## Main Niri keybindings
 
-| Сочетание | Действие |
+| Shortcut | Action |
 |---|---|
 | `Mod+Return` | Kitty |
 | `Mod+B` | Firefox |
 | `Mod+E` | Nautilus |
 | `Mod+Ctrl+Return` | Launcher |
 | `Mod+S` | Control Center |
-| `Mod+Shift+S` | Настройки Noctalia |
-| `Mod+Shift+Return` | Выбор обоев |
-| `Mod+Alt+L` | Блокировка |
+| `Mod+Shift+S` | Noctalia settings |
+| `Mod+Shift+Return` | Wallpaper picker |
+| `Mod+Alt+L` | Lock screen |
 | `Mod+O` | Overview |
 
-Полный список находится в `config/niri/cfg/keybinds.kdl`.
+The complete list is available in `config/niri/cfg/keybinds.kdl`.
 
-## Структура
+## Repository structure
 
 ```text
 .
-├── assets/                 # обои
-├── config/                 # содержимое ~/.config
-├── home/vimrc              # устанавливается как ~/.vimrc
-├── state/noctalia/         # переносимый шаблон темы и обоев
+├── assets/                 # wallpaper
+├── config/                 # contents of ~/.config
+├── home/vimrc              # installed as ~/.vimrc
+├── state/noctalia/         # portable theme and wallpaper template
 ├── install.sh
-└── README.md
+├── README.md
+└── README.ru.md
 ```
 
-## Настройка под себя
+## Customization
 
-- Панель: `config/noctalia/config.toml`, секция `[bar.main]`.
-- Прозрачность Kitty: `config/kitty/kitty.conf`.
-- Цвета Fish/Pure: `config/fish/config.fish`.
-- Бинды Niri: `config/niri/cfg/keybinds.kdl`.
-- Мониторы: `config/niri/cfg/display.kdl`.
+- Panel: `config/noctalia/config.toml`, section `[bar.main]`.
+- Kitty opacity: `config/kitty/kitty.conf`.
+- Fish/Pure colors: `config/fish/config.fish`.
+- Niri keybindings: `config/niri/cfg/keybinds.kdl`.
+- Displays: `config/niri/cfg/display.kdl`.
 
-Конфигурация монитора по умолчанию закомментирована. Получить имена и режимы
-подключённых дисплеев можно командой:
+The default display configuration is commented out. List connected displays
+and their modes with:
 
 ```bash
 niri msg outputs
 ```
 
-## Откат
+## Restoring a backup
 
-Закройте Niri/Noctalia, затем скопируйте нужные файлы из последнего каталога
-резервной копии обратно в домашний каталог. Установщик намеренно не содержит
-автоматического удаления или разрушительного `reset`.
+Close Niri and Noctalia, then copy the required files from the latest backup
+directory back into your home directory. The installer intentionally provides
+no automatic removal or destructive `reset` command.
 
-## Лицензия
+## License
 
-Конфиги и установщик распространяются по лицензии MIT.
+The configuration files and installer are distributed under the MIT License.
 
-[Bibata Cursor](https://github.com/ful1e5/Bibata_Cursor) не хранится в этом
-репозитории. Установщик загружает официальный Linux release-архив
-`Bibata-Modern-Classic.tar.xz` версии `v2.0.7` напрямую со страницы релизов
-проекта и распаковывает его в `~/.icons`.
+[Bibata Cursor](https://github.com/ful1e5/Bibata_Cursor) is not stored in this
+repository. The installer downloads the official
+`Bibata-Modern-Classic.tar.xz` Linux release archive for version `v2.0.7`
+directly from the project's release page and extracts it into `~/.icons`.
 
-Обои `gruvbox-boxes.png` добавлены пользователем. Перед публичным
-распространением репозитория убедитесь, что лицензия исходного изображения
-разрешает публикацию, либо замените файл собственными обоями.
+The `gruvbox-boxes.png` wallpaper was provided by the user. Before publishing
+or redistributing this repository, make sure the original image license permits
+redistribution, or replace it with your own wallpaper.
