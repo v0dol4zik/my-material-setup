@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <title>Material 2 Green — quiet chat background</title>
+  <desc>Original low-contrast paper geometry for readable messages, matching the graphite and green desktop.</desc>
+  <rect width="1920" height="1080" fill="#121212"/>
+  <path d="M0 0H1920V95L0 985Z" fill="#161616"/>
+  <path d="M0 0H1560L0 724Z" fill="#191919"/>
+  <path d="M0 669L1445 0H1500L0 697Z" fill="#163b26" opacity="0.45"/>
+  <path d="M990 1080L1920 650V1080Z" fill="#171717"/>
+  <path d="M1065 1080L1920 684V694L1087 1080Z" fill="#1d2420"/>
+</svg>

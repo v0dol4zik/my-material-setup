@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3840" height="2160" viewBox="0 0 1920 1080">
+  <title>Material 2 — Blue Paper</title>
+  <desc>Dark graphite paper planes with a blue accent, lit from the upper left.</desc>
+  <defs>
+    <linearGradient id="base" x2="0.7" y2="1">
+      <stop stop-color="#202124"/>
+      <stop offset="1" stop-color="#121212"/>
+    </linearGradient>
+    <linearGradient id="paper" x2="0.5" y2="1">
+      <stop stop-color="#2c2f33"/>
+      <stop offset="1" stop-color="#202124"/>
+    </linearGradient>
+    <linearGradient id="blue" x2="0.4" y2="1">
+      <stop stop-color="#8ab4f8"/>
+      <stop offset="1" stop-color="#669df6"/>
+    </linearGradient>
+    <filter id="elevation" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="12"/>
+      <feOffset dy="12"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.34"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="contact" x="-50%" y="-50%" width="200%" height="200%" color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5"/>
+      <feOffset dy="5"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.28"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#base)"/>
+  <path d="M-80 950 1140 -90 1620 -90 405 1120 -80 1120Z" fill="#191b1e" filter="url(#elevation)"/>
+  <path d="M980 -110 1610 -110 2030 300 2030 1090 1870 1090Z" fill="url(#paper)" filter="url(#elevation)"/>
+  <g filter="url(#elevation)">
+    <circle cx="1398" cy="436" r="208" fill="url(#blue)"/>
+    <path d="M1251 583a208 208 0 0 0 294-294Z" fill="#669df6" opacity="0.52"/>
+  </g>
+  <path d="M728 1080 1920 405 1920 1080Z" fill="#24272b" filter="url(#elevation)"/>
+  <path d="M1240 1080 1920 688 1920 790 1415 1080Z" fill="#3c4043" filter="url(#contact)"/>
+  <path d="M1240 1080 1920 688" fill="none" stroke="#5f6368" stroke-opacity="0.24"/>
+</svg>

@@ -1,7 +1,16 @@
-config_version = 12
+config_version = 14
 
 [theme]
-builtin = "Catppuccin"
+source = "custom"
+custom_palette = "Material2-Green"
+mode = "dark"
+shell_mode = "follow"
 
     [theme.templates]
     builtin_ids = [ "btop", "gtk3", "gtk4", "kitty", "niri", "qt" ]
+
+[wallpaper.default]
+path = "@CONFIG_HOME@/noctalia/wallpapers/material2-green.jpg"
+
+[wallpaper.last]
+path = "@CONFIG_HOME@/noctalia/wallpapers/material2-green.jpg"

@@ -8,7 +8,7 @@ readonly CONFIG_HOME="${XDG_CONFIG_HOME:-${TARGET_HOME}/.config}"
 readonly STATE_HOME="${XDG_STATE_HOME:-${TARGET_HOME}/.local/state}"
 readonly DATA_HOME="${XDG_DATA_HOME:-${TARGET_HOME}/.local/share}"
 readonly RUN_ID="$(date +%Y%m%d-%H%M%S)"
-readonly BACKUP_ROOT="${STATE_HOME}/catppuccin-noctalia-dotfiles/backups/${RUN_ID}"
+readonly BACKUP_ROOT="${STATE_HOME}/material2-noctalia-dotfiles/backups/${RUN_ID}"
 readonly BIBATA_VERSION="v2.0.7"
 readonly BIBATA_ARCHIVE="Bibata-Modern-Classic.tar.xz"
 readonly BIBATA_URL="https://github.com/ful1e5/Bibata_Cursor/releases/download/${BIBATA_VERSION}/${BIBATA_ARCHIVE}"
@@ -28,11 +28,11 @@ EOF
 }
 
 log() {
-    printf '[catppuccin-dots] %s\n' "$*"
+    printf '[material2-dots] %s\n' "$*"
 }
 
 die() {
-    printf '[catppuccin-dots] error: %s\n' "$*" >&2
+    printf '[material2-dots] error: %s\n' "$*" >&2
     exit 1
 }
 
@@ -79,7 +79,8 @@ install_tree() {
     backup_target "$target"
     log "install ${target#${TARGET_HOME}/}"
     run mkdir -p -- "$target"
-    run cp -a -- "${source}/." "${target}/"
+    # Replace old file symlinks (not their system-wide targets), after backup.
+    run cp -a --remove-destination -- "${source}/." "${target}/"
 }
 
 install_file() {
@@ -96,12 +97,14 @@ install_noctalia_state() {
     local source="${SCRIPT_DIR}/state/noctalia/settings.toml.in"
     local target="${STATE_HOME}/noctalia/settings.toml"
     local rendered
+    local line
+    local config_toml
 
     backup_target "$target"
     log "render ${target#${TARGET_HOME}/}"
 
     if $DRY_RUN; then
-        printf '  + render %q with HOME=%q\n' "$source" "$TARGET_HOME"
+        printf '  + render %q with CONFIG_HOME=%q\n' "$source" "$CONFIG_HOME"
         return
     fi
 
@@ -109,7 +112,11 @@ install_noctalia_state() {
     [[ -n "$rendered" && -f "$rendered" ]] || die "failed to create temporary file"
     trap 'rm -f -- "${rendered:-}"' RETURN
 
+    # Escape the config directory as a TOML double-quoted string.
+    config_toml="${CONFIG_HOME//\\/\\\\}"
+    config_toml="${config_toml//\"/\\\"}"
     while IFS= read -r line || [[ -n "$line" ]]; do
+        line="${line//@CONFIG_HOME@/${config_toml}}"
         printf '%s\n' "${line//@HOME@/${TARGET_HOME}}"
     done < "$source" > "$rendered"
 
@@ -157,7 +164,8 @@ if $INSTALL_PACKAGES; then
     log "installing packages"
     run sudo pacman -S --needed \
         niri noctalia kitty fish fish-pure-prompt fish-autopair \
-        fastfetch btop vim papirus-icon-theme adw-gtk-theme
+        fastfetch btop vim papirus-icon-theme adw-gtk-theme \
+        ttf-roboto ttf-roboto-mono-nerd
 fi
 
 for app in niri noctalia kitty fish fastfetch btop gtk-3.0 gtk-4.0; do

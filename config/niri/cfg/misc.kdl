@@ -24,9 +24,9 @@
     }
 
     blur {
-        passes 2        // more passes = stronger blur (default: 3)
+        passes 3        // Smooth background behind translucent shell surfaces
         offset 3.0      // sample distance per pass (default: 3.0)
-        noise 0.03      // grain overlay (default: 0.02)
+        noise 0.015     // Subtle grain
         saturation 1.0  // color saturation boost (default: 1.5)
     }
 

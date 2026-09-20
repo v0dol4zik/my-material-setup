@@ -1,11 +1,27 @@
 [shell]
 polkit_agent = true
-corner_radius_scale = 0.92
-button_borders = true
+font_family = "Roboto"
+corner_radius_scale = 0.25
+button_borders = false
 input_borders = true
-popup_borders = true
+popup_borders = false
 popup_shadows = true
-card_borders = true
+card_borders = false
+
+[shell.animation]
+enabled = true
+speed = 1.1
+
+[theme]
+source = "custom"
+custom_palette = "Material2-Green"
+mode = "dark"
+shell_mode = "follow"
+pure_black_dark = false
+
+[wallpaper]
+transition = [ "fade" ]
+transition_duration = 250.0
 
 [bar]
 order = [ "main" ]
@@ -17,39 +33,30 @@ auto_hide = false
 reserve_space = true
 layer = "top"
 
-# Compact floating Catppuccin bar.
-thickness = 34
-background_opacity = 0.75
+# Material 2 app bar, flush with the screen edges.
+thickness = 40
+background_opacity = 0.78
 border = "outline"
-border_width = 1.0
-shadow = true
-radius = 11
-margin_ends = 12
-margin_edge = 8
-margin_opposite_edge = 4
-padding = 10
-widget_spacing = 5
-scale = 0.94
-font_weight = 600
+border_width = 0.0
+shadow = false
+radius = 0
+margin_ends = 0
+margin_edge = 0
+margin_opposite_edge = 0
+padding = 16
+widget_spacing = 8
+scale = 1.0
+font_weight = 500
 hover_highlight = true
 
-# Keep the bar clean; widgets retain Noctalia's native appearance.
+# One translucent surface; no extra opaque capsule around system widgets.
 capsule = false
 start = [ "launcher", "workspaces" ]
 center = [ "clock" ]
-end = [ "tray", "notifications", "group:status" ]
-
-[[bar.main.capsule_group]]
-id = "status"
-members = [ "network", "volume", "battery", "control-center" ]
-fill = "surface_variant"
-padding = 5
-radius = 11
-opacity = 0.78
-enabled = true
+end = [ "tray", "notifications", "network", "volume", "battery", "control-center" ]
 
 [widget.workspaces]
-style = "focus_hint"
+style = "minimal"
 
 [widget.clock]
 format = "{:%a, %d %b · %H:%M}"
@@ -75,41 +82,45 @@ show_label = false
 hide_when_no_unread = true
 
 [notification]
-scale = 0.82
-background_opacity = 0.82
+scale = 0.88
+background_opacity = 0.88
+border = false
 layer = "overlay"
 offset_x = 12
-offset_y = 8
-max_visible = 3
+offset_y = 12
+max_visible = 2
 collapse_on_dismiss = true
-show_app_name = false
-show_actions = true
+show_app_name = true
+# Clicking a toast still invokes its default action; history is unchanged.
+show_actions = false
 
-# Unified shell surfaces: Catppuccin glass, consistent outlines and radius.
+# Material 2 shapes with translucent surfaces and soft elevation shadows.
 [shell.panel]
 transparency_mode = "glass"
-borders = true
+borders = false
 shadow = true
 control_center_placement = "attached"
+open_near_click_control_center = true
 launcher_placement = "floating"
 launcher_position = "center"
-floating_offset = 8
+floating_offset = 12
 list_item_background = false
 
 [shell.launcher]
-compact = true
-app_grid = false
+compact = false
+app_grid = true
 categories = true
 show_icons = true
 sort_by_usage = true
 
 [shell.shadow]
-alpha = 0.38
-direction = "down"
+# A lighter, balanced shadow keeps glass panel edges from looking like a dark slab.
+alpha = 0.16
+direction = "center"
 
 [control_center]
 hidden_tabs = [ "monitor" ]
-width = 620
+width = 600
 sidebar = "compact"
 sidebar_section = "compact"
 show_shortcut_labels = false
@@ -120,18 +131,55 @@ enabled = true
 position = "top_center"
 position_vertical = "top_center"
 orientation = "horizontal"
-scale = 0.82
-background_opacity = 0.82
-border = true
-offset_x = 12
-offset_y = 8
+scale = 0.9
+background_opacity = 0.86
+border = false
+offset_x = 16
+offset_y = 12
 
 [lockscreen]
 enabled = true
-blurred_desktop = true
-blur_intensity = 0.68
-tint_intensity = 0.36
+blurred_desktop = false
+blur_intensity = 0.2
+tint_intensity = 0.65
 wallpaper = ""
+
+# One compact login box; no weather, media, or session-action clutter.
+[lockscreen_widgets]
+enabled = true
+schema_version = 2
+widget_order = [ "lockscreen-login-box@eDP-1" ]
+
+[lockscreen_widgets.grid]
+visible = false
+
+[lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+type = "login_box"
+enabled = true
+output = "eDP-1"
+box_width = 384.0
+box_height = 152.0
+cx = 768.0
+cy = 518.0
+placement_width = 1536.0
+placement_height = 864.0
+rotation = 0.0
+
+[lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+layout = "regular"
+background_color = "surface"
+background_opacity = 0.86
+background_radius = 4.0
+input_opacity = 1.0
+input_radius = 4.0
+center_password_text = false
+show_caps_lock = true
+show_keyboard_layout = true
+show_login_button = true
+show_unlock_hint = false
+show_session_buttons = false
+show_media = false
+show_weather = false
 
 [idle]
 pre_action_fade_seconds = 2.0

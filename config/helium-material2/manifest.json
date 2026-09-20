@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Material 2 Blue",
+  "version": "1.0.0",
+  "description": "Graphite surfaces and a muted blue active tab to match the Material 2 desktop. Colors only: no scripts, permissions, or network access.",
+  "theme": {
+    "colors": {
+      "frame": [18, 18, 18],
+      "frame_inactive": [26, 26, 26],
+      "frame_incognito": [18, 18, 18],
+      "frame_incognito_inactive": [26, 26, 26],
+      "background_tab": [30, 30, 30],
+      "background_tab_inactive": [26, 26, 26],
+      "toolbar": [36, 51, 72],
+      "toolbar_text": [232, 234, 237],
+      "toolbar_button_icon": [189, 193, 198],
+      "tab_text": [232, 234, 237],
+      "tab_background_text": [154, 160, 166],
+      "tab_background_text_inactive": [154, 160, 166],
+      "bookmark_text": [232, 234, 237],
+      "omnibox_background": [30, 30, 30],
+      "omnibox_text": [232, 234, 237],
+      "ntp_background": [18, 18, 18],
+      "ntp_text": [232, 234, 237],
+      "ntp_link": [138, 180, 248],
+      "ntp_header": [138, 180, 248],
+      "button_background": [0, 0, 0, 0]
+    }
+  }
+}

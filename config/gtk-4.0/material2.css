@@ -1,0 +1,143 @@
+:root {
+    --window-radius: 4px;
+    --card-bg-color: #242424;
+    --headerbar-bg-color: #242424;
+    --headerbar-backdrop-color: #202124;
+    --dialog-bg-color: #282828;
+    --popover-bg-color: #2c2c2c;
+    --sidebar-bg-color: #242424;
+    --sidebar-backdrop-color: #202124;
+    --sidebar-border-color: #3c4043;
+    --view-bg-color: #1e1e1e;
+    --shade-color: rgba(0, 0, 0, 0.24);
+    --success-color: #81c995;
+    --success-bg-color: #254333;
+    --success-fg-color: #a8dab5;
+    --warning-color: #fdd663;
+    --warning-bg-color: #493c1c;
+    --warning-fg-color: #fde293;
+}
+/* Material 2: 4 px shapes, filled controls, restrained elevation. */
+@define-color m2_surface #1e1e1e;
+@define-color m2_raised #242424;
+@define-color m2_high #2c2c2c;
+@define-color m2_outline #3c4043;
+@define-color m2_text #e8eaed;
+@define-color m2_muted #bdc1c6;
+@define-color m2_accent #25e075;
+@define-color m2_on_accent #082613;
+
+headerbar,
+.titlebar {
+    min-height: 40px;
+    background-color: @m2_raised;
+    background-image: none;
+    border-radius: 4px 4px 0 0;
+    border-bottom: 1px solid @m2_outline;
+    box-shadow: none;
+}
+
+button,
+entry,
+searchentry,
+combobox button {
+    border-radius: 4px;
+    transition-duration: 150ms;
+}
+
+button:not(.flat):not(.circular) {
+    background-image: none;
+    box-shadow: none;
+}
+
+button.suggested-action {
+    color: @m2_on_accent;
+    background-color: @m2_accent;
+    background-image: none;
+    border-color: transparent;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.22);
+}
+
+button.suggested-action:hover {
+    background-color: #69e99f;
+}
+
+entry,
+searchentry {
+    background-color: @m2_high;
+    border-color: transparent;
+    border-bottom: 1px solid @m2_muted;
+    box-shadow: none;
+}
+
+entry:focus,
+searchentry:focus {
+    border-bottom-color: @m2_accent;
+    box-shadow: inset 0 -1px @m2_accent;
+}
+
+.sidebar,
+.navigation-sidebar {
+    background-color: @m2_raised;
+}
+
+.sidebar row,
+.navigation-sidebar row {
+    border-radius: 4px;
+}
+
+.sidebar row:selected,
+.navigation-sidebar row:selected {
+    background-color: #174a2b;
+    color: @m2_text;
+}
+
+notebook > header {
+    background-color: @m2_raised;
+    border-color: @m2_outline;
+}
+
+notebook > header tab {
+    border-radius: 0;
+    box-shadow: none;
+}
+
+notebook > header.top tab:checked {
+    box-shadow: inset 0 -2px @m2_accent;
+}
+
+notebook > header.bottom tab:checked {
+    box-shadow: inset 0 2px @m2_accent;
+}
+
+scale trough {
+    min-height: 4px;
+    min-width: 4px;
+    border-radius: 2px;
+}
+
+scale highlight,
+progressbar progress {
+    background-color: @m2_accent;
+    border-radius: 2px;
+}
+
+tooltip,
+.card {
+    border-radius: 4px;
+}
+
+popover > contents {
+    background-color: @m2_high;
+    background-image: none;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.30);
+}
+
+window.csd,
+window.csd > decoration,
+window.csd > contents,
+messagedialog .dialog-action-area button {
+    border-radius: 4px;
+}

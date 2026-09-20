@@ -2,63 +2,54 @@ if test -f /usr/share/cachyos-fish-config/cachyos-config.fish
     source /usr/share/cachyos-fish-config/cachyos-config.fish
 end
 
-# Catppuccin palette (kept local so it works without extra plugins).
-set -g fish_color_normal cdd6f4
-set -g fish_color_command a6e3a1 --bold
-set -g fish_color_keyword f38ba8
-set -g fish_color_quote f9e2af
-set -g fish_color_redirection 94e2d5
-set -g fish_color_end fab387
-set -g fish_color_error f38ba8 --bold
-set -g fish_color_param cdd6f4
-set -g fish_color_comment 6c7086 --italics
-set -g fish_color_selection 1e1e2e --background=89b4fa
-set -g fish_color_search_match 1e1e2e --background=f9e2af
-set -g fish_color_operator 94e2d5
-set -g fish_color_escape cba6f7
-set -g fish_color_autosuggestion 6c7086
-set -g fish_pager_color_progress 6c7086
-set -g fish_pager_color_prefix a6e3a1 --bold
-set -g fish_pager_color_completion cdd6f4
-set -g fish_pager_color_description 6c7086
+# Material 2 palette (kept local so it works without extra plugins).
+set -g fish_color_normal e8eaed
+set -g fish_color_command 81c995 --bold
+set -g fish_color_keyword f28b82
+set -g fish_color_quote fdd663
+set -g fish_color_redirection 78d9ec
+set -g fish_color_end 25e075
+set -g fish_color_error f28b82 --bold
+set -g fish_color_param e8eaed
+set -g fish_color_comment 9aa0a6 --italics
+set -g fish_color_selection 121212 --background=25e075
+set -g fish_color_search_match 121212 --background=fdd663
+set -g fish_color_operator 78d9ec
+set -g fish_color_escape c58af9
+set -g fish_color_autosuggestion 9aa0a6
+set -g fish_pager_color_progress 9aa0a6
+set -g fish_pager_color_prefix 81c995 --bold
+set -g fish_pager_color_completion e8eaed
+set -g fish_pager_color_description 9aa0a6
 
-# Minimal greeting without a system-information dump.
+# A quiet terminal: the prompt already shows everything needed.
 function fish_greeting
-    set -l hour (date +%H)
-    set -l hello Доброй_ночи
-
-    if test $hour -ge 5 -a $hour -lt 12
-        set hello Доброе_утро
-    else if test $hour -ge 12 -a $hour -lt 18
-        set hello Добрый_день
-    else if test $hour -ge 18 -a $hour -lt 23
-        set hello Добрый_вечер
-    end
-
-    set hello (string replace _ ' ' $hello)
-    set_color fab387
-    printf '󰈺  %s, %s' $hello $USER
-    set_color 6c7086
-    printf '  ·  %s\n' (date '+%d.%m · %H:%M')
-    set_color normal
 end
 
-# Pure prompt: Catppuccin colors and useful status information.
-set -g pure_color_primary fab387
-set -g pure_color_info 89b4fa
-set -g pure_color_mute 6c7086
-set -g pure_color_success a6e3a1
-set -g pure_color_danger f38ba8
-set -g pure_color_warning f9e2af
-set -g pure_color_current_directory fab387
-set -g pure_color_git_branch a6e3a1
-set -g pure_color_git_dirty f9e2af
-set -g pure_color_git_stash cba6f7
-set -g pure_color_git_unpushed_commits 89b4fa
-set -g pure_color_git_unpulled_commits 94e2d5
-set -g pure_color_command_duration f9e2af
+# Pure: one line, neutral context, green prompt, red only for errors.
+set -g pure_color_primary 25e075
+set -g pure_color_info 25e075
+set -g pure_color_mute 9aa0a6
+set -g pure_color_success 25e075
+set -g pure_color_danger f28b82
+set -g pure_color_warning 9aa0a6
+set -g pure_color_current_directory e8eaed
+set -g pure_color_git_branch 9aa0a6
+set -g pure_color_git_dirty 25e075
+set -g pure_color_git_stash 9aa0a6
+set -g pure_color_git_unpushed_commits 9aa0a6
+set -g pure_color_git_unpulled_commits 9aa0a6
+set -g pure_color_command_duration 9aa0a6
+set -g pure_color_prompt_on_success 25e075
+set -g pure_color_prompt_on_error f28b82
+set -g pure_color_exit_status f28b82
+set -g pure_enable_single_line_prompt true
 set -g pure_enable_git true
-set -g pure_show_numbered_git_indicator true
+set -g pure_enable_aws_profile false
+set -g pure_show_numbered_git_indicator false
+set -g pure_show_system_time false
 set -g pure_show_exit_status true
-set -g pure_threshold_command_duration 3000
+set -g pure_symbol_exit_status_prefix '!'
+# Pure measures this threshold in seconds, not milliseconds.
+set -g pure_threshold_command_duration 5
 set -g pure_truncate_prompt_current_directory_keeps 3
