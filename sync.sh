@@ -6,7 +6,8 @@
 
 set -Eeuo pipefail
 
-readonly SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+readonly SCRIPT_DIR
 readonly TARGET_HOME="${HOME:?HOME is not set}"
 readonly CONFIG_HOME="${XDG_CONFIG_HOME:-${TARGET_HOME}/.config}"
 readonly STATE_HOME="${XDG_STATE_HOME:-${TARGET_HOME}/.local/state}"

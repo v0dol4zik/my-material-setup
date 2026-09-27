@@ -1,0 +1,25 @@
+name: Check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  scripts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: ShellCheck
+        run: shellcheck install.sh sync.sh config/niri/scripts/*.sh
+      - name: Telegram theme
+        run: node themes/telegram/validate.mjs
+
+  niri:
+    runs-on: ubuntu-latest
+    container: archlinux:latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install niri
+        run: pacman -Syu --noconfirm niri
+      - name: Validate config
+        run: niri validate -c config/niri/config.kdl

@@ -2,12 +2,13 @@
 
 set -Eeuo pipefail
 
-readonly SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+readonly SCRIPT_DIR
 readonly TARGET_HOME="${HOME:?HOME is not set}"
 readonly CONFIG_HOME="${XDG_CONFIG_HOME:-${TARGET_HOME}/.config}"
 readonly STATE_HOME="${XDG_STATE_HOME:-${TARGET_HOME}/.local/state}"
-readonly DATA_HOME="${XDG_DATA_HOME:-${TARGET_HOME}/.local/share}"
-readonly RUN_ID="$(date +%Y%m%d-%H%M%S)"
+RUN_ID="$(date +%Y%m%d-%H%M%S)"
+readonly RUN_ID
 readonly BACKUP_ROOT="${STATE_HOME}/material2-noctalia-dotfiles/backups/${RUN_ID}"
 readonly BIBATA_VERSION="v2.0.7"
 readonly BIBATA_ARCHIVE="Bibata-Modern-Classic.tar.xz"
@@ -65,7 +66,7 @@ backup_target() {
     [[ "$target" == "${TARGET_HOME}/"* ]] || die "refusing to back up outside HOME: $target"
     [[ -e "$target" || -L "$target" ]] || return 0
 
-    relative="${target#${TARGET_HOME}/}"
+    relative="${target#"${TARGET_HOME}"/}"
     log "backup ~/${relative}"
     run mkdir -p -- "${BACKUP_ROOT}/$(dirname -- "$relative")"
     run cp -a -- "$target" "${BACKUP_ROOT}/${relative}"
@@ -77,7 +78,7 @@ install_tree() {
 
     [[ -d "$source" ]] || die "missing source directory: $source"
     backup_target "$target"
-    log "install ${target#${TARGET_HOME}/}"
+    log "install ${target#"${TARGET_HOME}"/}"
     run mkdir -p -- "$target"
     # Replace old file symlinks (not their system-wide targets), after backup.
     run cp -a --remove-destination -- "${source}/." "${target}/"
@@ -89,7 +90,7 @@ install_file() {
 
     [[ -f "$source" ]] || die "missing source file: $source"
     backup_target "$target"
-    log "install ${target#${TARGET_HOME}/}"
+    log "install ${target#"${TARGET_HOME}"/}"
     run install -Dm644 -- "$source" "$target"
 }
 
@@ -102,7 +103,7 @@ render_file() {
 
     [[ -f "$source" ]] || die "missing source file: $source"
     backup_target "$target"
-    log "render ${target#${TARGET_HOME}/}"
+    log "render ${target#"${TARGET_HOME}"/}"
 
     if $DRY_RUN; then
         printf '  + render %q with CONFIG_HOME=%q\n' "$source" "$CONFIG_HOME"
