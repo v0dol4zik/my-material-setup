@@ -11,25 +11,31 @@
 
 Цвет `#25E075` взят с зелёных геометрических обоев. Он объединяет панель, выделение текста, рамку активного окна, терминал и тему Telegram.
 
+![Niri и Noctalia: Kitty с Fastfetch рядом с приложением GTK 4](assets/screenshots/desktop.png)
+
 ## Что внутри
 
 | Компонент | Настройка |
 |---|---|
-| Окна | Niri: скругления 4 px, зазоры 12 px, рамка фокуса 2 px |
+| Окна | Niri: скругления 4 px, зазоры 12 px, рамка фокуса 1 px и тени для глубины |
+| Анимации | Кривые Material 2: окна вырастают с 90% с проявлением и закрываются быстрее, чем открываются |
 | Оболочка | Noctalia 5.1 с конфигурацией в TOML |
 | Панель | Сверху, вплотную к краям экрана, высота 40 px, непрозрачность 78% |
 | Рабочие пространства | Минимальные текстовые метки без иконки активного приложения |
 | Меню | Сетка приложений, полупрозрачный центр управления и размытие фона |
 | Терминал | Kitty: Roboto Mono Nerd Font, отступы 14 px, непрозрачность 82% |
 | Командная оболочка | Fish + Pure: однострочный промпт, каталог и Git, красный индикатор ошибки |
-| GTK 3/4 | `adw-gtk3-dark`, Material 2 CSS, Roboto 11 и Papirus Dark |
+| GTK 3/4 | `adw-gtk3-dark`, Material 2 CSS в цветах палитры, Roboto 11 и Papirus Dark |
+| Qt | qt6ct с палитрой Noctalia, стиль Fusion, Roboto и Papirus Dark |
 | Курсор | Bibata Modern Classic, размер 20 |
-| Утилиты | Конфиги Fastfetch, Btop и Vim |
+| Утилиты | Fastfetch, Btop, Cava и Vim в цветах палитры |
+| Медиа | mpv со штатным OSC в цветах палитры и горячими клавишами, работающими и на русской раскладке |
+| Браузер и редакторы | Тема Helium, а также темы Zed и Discord из community-шаблонов Noctalia |
 | Telegram Desktop | Отдельная тема Material 2 Green для ручного импорта |
 
 Уведомления компактные, одновременно видны не более двух. Экран блокировки использует затемнённые обои и небольшое поле входа с индикаторами раскладки и Caps Lock. После 10 минут бездействия включается блокировка, после 20 минут гаснет экран.
 
-Горячие клавиши запускают **Helium Browser** и **Thunar**. Helium сохраняет стандартное оформление. Центр управления настроен открываться рядом с местом нажатия на панели.
+Горячие клавиши запускают **Helium Browser** и **Thunar**. Центр управления настроен открываться рядом с местом нажатия на панели.
 
 ### Палитра
 
@@ -42,6 +48,8 @@
 
 В репозитории также сохранены палитра **Material2-Blue** и обои Blue Paper.
 
+`Mod+Shift+T` переключает тёмный и светлый режим. Noctalia заново рендерит все шаблоны цветов, поэтому за ним следуют оболочка, GTK, Qt, Kitty, Vim, mpv и остальное. Уже запущенные Fish сохраняют старые цвета, пока не откроете новый.
+
 ## Требования
 
 Сетап рассчитан прежде всего на CachyOS. Для Arch Linux нужны совместимые версии Niri и Noctalia; пакет `noctalia` может потребоваться установить отдельно. Конфиги используют Noctalia 5.1 с командой `noctalia` и сборку Niri с поддержкой `blur` и `background-effect`.
@@ -50,13 +58,14 @@
 
 ```text
 niri noctalia kitty fish fish-pure-prompt fish-autopair
-fastfetch btop vim papirus-icon-theme adw-gtk-theme
-ttf-roboto ttf-roboto-mono-nerd
+fastfetch btop cava mpv vim papirus-icon-theme adw-gtk-theme qt6ct
+ttf-roboto ttf-roboto-mono-nerd xwayland-satellite
+xdg-desktop-portal-gnome xdg-desktop-portal-gtk
 ```
 
 Для клонирования нужен `git`, для установщика — Bash, `curl` и `tar` с поддержкой `.xz`. Курсор загружается из GitHub, поэтому даже установка без пакетов требует подключения к сети.
 
-Helium, Thunar и Telegram устанавливаются отдельно. Для X11-приложений пригодится `xwayland-satellite`, для интеграции с рабочим столом и демонстрации экрана — настроенные `xdg-desktop-portal`, `xdg-desktop-portal-gnome` и `xdg-desktop-portal-gtk`.
+Helium, Thunar и Telegram устанавливаются отдельно. Для демонстрации экрана нужен `xdg-desktop-portal-gnome`: портальный конфиг Niri отправляет запись экрана через него. Qt-приложения подхватывают qt6ct из `QT_QPA_PLATFORMTHEME`, который задаёт Niri, поэтому после установки перезайдите в сеанс.
 
 ## Установка
 
@@ -84,10 +93,11 @@ bash ./install.sh
 
 ### Что меняет установщик
 
-- Копирует конфиги Niri, Noctalia, Kitty, Fish, Fastfetch, Btop и GTK 3/4 в `~/.config`.
-- Устанавливает `home/vimrc` как `~/.vimrc`.
-- Загружает Bibata Modern Classic `v2.0.7` в `~/.icons`.
-- Записывает `~/.local/state/noctalia/settings.toml` с зелёной палитрой, обоями и шаблонами цветов.
+- Копирует конфиги Niri, Noctalia, Kitty, Fish, Fastfetch, Btop, Cava, mpv, GTK 3/4 и тему Helium в `~/.config`.
+- Устанавливает `home/vimrc` как `~/.vimrc`, а цветовую схему Vim — в `~/.vim/colors`.
+- Загружает Bibata Modern Classic `v2.0.7` в `~/.icons` и делает его курсором по умолчанию в `~/.icons/default`.
+- Записывает `~/.local/state/noctalia/settings.toml` с зелёной палитрой, обоями и шаблонами цветов, а также `~/.config/qt6ct/qt6ct.conf`.
+- Задаёт курсор, иконки и шрифты через `gsettings`, чтобы порталы и диалоги GTK совпадали с остальным рабочим столом.
 - Перед перезаписью сохраняет существующие конфиги, настройки Noctalia и курсор в резервную копию.
 
 Расположение конфигов и состояния учитывает `XDG_CONFIG_HOME` и `XDG_STATE_HOME`. Приведённые здесь пути соответствуют стандартным значениям.
@@ -118,6 +128,7 @@ noctalia config validate
 | `Mod+Shift+Return` | Выбор обоев |
 | `Mod+Alt+L` | Заблокировать экран |
 | `Mod+Shift+Q` | Меню сеанса |
+| `Mod+Shift+T` | Переключить тёмный / светлый режим |
 | `Mod+O` | Обзор окон и рабочих пространств |
 | `Mod+H/J/K/L` или `Mod+стрелки` | Переключить фокус |
 | `Mod+Ctrl+H/L` | Переместить колонку влево / вправо |
@@ -135,6 +146,7 @@ noctalia config validate
 | `Mod+Shift+стрелки` | Переключить фокус между мониторами |
 | `Mod+Ctrl+Shift+стрелки` | Переместить колонку на другой монитор |
 | `Ctrl+Shift+1` / `2` / `3` | Снимок области / экрана / окна |
+| `Print` | Снимок с аннотациями (Noctalia) |
 | `Alt+Shift` | Переключить раскладку US / RU |
 | `Mod+Shift+Esc` | Открыть подсказку сочетаний клавиш |
 
@@ -151,10 +163,15 @@ noctalia config validate
 | Уведомления, блокировку и таймеры | `config/noctalia/config.toml`: `[notification]`, `[lockscreen_widgets]`, `[idle]` |
 | Акцент и остальные цвета | `config/noctalia/palettes/Material2-Green.json` |
 | Обои по умолчанию | `config/noctalia/wallpapers/material2-green.jpg` |
-| Форму элементов GTK | `config/gtk-3.0/material2.css`, `config/gtk-4.0/material2.css` |
+| Форму элементов GTK | `config/noctalia/templates/gtk3-material2.css`, `gtk4-material2.css` |
 | Прозрачность и шрифт терминала | `config/kitty/kitty.conf` |
-| Цвета Fish и Pure | `config/fish/config.fish` |
+| Цвета Fish и Pure | `config/noctalia/templates/fish-colors.fish` |
+| Настройки промпта Pure | `config/fish/config.fish` |
+| Цвета Vim | `config/noctalia/templates/vim-colors.vim` |
+| Тему Helium | `config/noctalia/templates/helium-manifest.json` |
 | Горячие клавиши и раскладку | `config/niri/cfg/keybinds.kdl`, `config/niri/cfg/input.kdl` |
+| Анимации | `config/niri/cfg/animation.kdl` |
+| Правила окон и скрытие при записи экрана | `config/niri/cfg/rules.kdl` |
 | Мониторы и масштабирование | `config/niri/cfg/display.kdl` |
 
 Имена мониторов и доступные режимы можно посмотреть командой:
@@ -165,9 +182,59 @@ niri msg outputs
 
 Пример монитора в `display.kdl` отключён через `/-`. Поле входа на экране блокировки привязано к `eDP-1`: для другого дисплея измените `output`, идентификатор `lockscreen-login-box@eDP-1` и его запись в `widget_order`. Положение и размер удобно настроить через интерфейс Noctalia.
 
-Палитра фиксированная: смена обоев сама по себе не заменяет зелёный акцент. Noctalia применяет цвета к GTK, Kitty, Btop, Niri и Qt через встроенные шаблоны. Дополнительные файлы `material2.css` задают форму элементов GTK отдельно от сгенерированных цветов; итоговый вид зависит от поддержки темы конкретным приложением.
+Палитра фиксированная: смена обоев сама по себе не заменяет зелёный акцент. Noctalia применяет цвета к GTK, Qt, Kitty, Btop, Cava и Niri через встроенные шаблоны, к Zed и Discord через community-шаблоны, а ко всему остальному через пользовательские шаблоны ниже. Итоговый вид зависит от поддержки темы конкретным приложением.
 
-При повторной установке скрипт снова применяет палитру, обои и настройки из репозитория. Если хотите сохранить свои изменения, перенесите их в конфиги и [шаблон состояния](state/noctalia/settings.toml.in) до запуска установщика.
+При повторной установке скрипт снова применяет палитру, обои и настройки из репозитория. Чтобы сохранить свои изменения, сначала запустите `./sync.sh` (см. [ниже](#синхронизация-с-репозиторием)), а изменения состояния перенесите в [шаблон состояния](state/noctalia/settings.toml.in) вручную.
+
+### Шаблоны цветов
+
+Файлы в `config/noctalia/templates` — пользовательские шаблоны Noctalia, подключённые в `config.toml` секциями `[theme.templates.user.<id>]`. Noctalia рендерит их при каждой смене палитры или режима: форму элементов GTK (`material2.css`), цвета Fish и Pure, цветовую схему Vim, тему Helium и цвета mpv. Редактируйте шаблон, а не результат: следующий рендер его перезапишет. Отрендеренные копии в репозитории — тёмный вариант Material2-Green, запасной на случай первого запуска.
+
+Чтобы добавить свой шаблон, положите его рядом с остальными и подключите:
+
+```toml
+[theme.templates.user.example]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/example.conf"
+output_path = "~/.config/example/colors.conf"
+```
+
+Пути пишите через `$XDG_CONFIG_HOME` или `~`. `$HOME` Noctalia не раскрывает, и шаблон с ним молча не рендерится. Цвета записываются как `{{colors.primary.default.hex}}` (также работают `hex_stripped`, `red`, `green` и `blue`), а `{{ mode }}` даёт `dark` или `light`. Токены поверхностей Noctalia вычисляет сама, значения палитры без изменений несут только токены `terminal_*`. Применить изменения:
+
+```bash
+noctalia msg config-reload
+noctalia msg templates-apply
+```
+
+### Helium, Zed и Discord
+
+Тема Helium устанавливается в `~/.config/helium-material2`. Откройте `chrome://extensions`, включите **режим разработчика**, нажмите **Загрузить распакованное расширение** и выберите эту папку. Noctalia перезаписывает тему при смене палитры или режима, но Helium перечитывает её только после нажатия кнопки перезагрузки у расширения.
+
+Community-шаблон Zed пишет `~/.config/zed/themes/noctalia.json`. Чтобы тема следовала системному режиму, добавьте в `~/.config/zed/settings.json`:
+
+```json
+"theme": {
+  "mode": "system",
+  "light": "Noctalia Light",
+  "dark": "Noctalia Dark"
+}
+```
+
+Шаблон Discord кладёт темы для Vesktop, Vencord, BetterDiscord, Equicord, WebCord и других модов клиента в их папки тем; включите нужную в настройках тем клиента.
+
+### Приватность при демонстрации экрана
+
+Окна Telegram и уведомления Noctalia скрыты из записи экрана правилами в `rules.kdl`: зрители демонстрации видят на их месте чёрные прямоугольники. На скриншотах они остаются. Если это не нужно, удалите правила `block-out-from "screencast"`.
+
+## Синхронизация с репозиторием
+
+`install.sh` копирует файлы, а не делает ссылки, поэтому правки в `~/.config` остаются там. `sync.sh` переносит их обратно:
+
+```bash
+./sync.sh --dry-run   # показать отличающиеся файлы
+./sync.sh             # скопировать их, затем проверить через git diff
+```
+
+Он обновляет только файлы, которые уже есть в репозитории; новые нужно скопировать вручную. Заготовки `*.in` и полные конфиги, которые сами пишут btop и cava, пропускаются. Результаты шаблонов копируются, только пока Noctalia в тёмном режиме на Material2-Green, то есть в том состоянии, которое записано в запасных копиях.
 
 ## Тема Telegram Desktop
 
@@ -181,20 +248,26 @@ niri msg outputs
 
 ```text
 .
-├── assets/                    # Дополнительные обои от предыдущего сетапа
+├── .github/workflows/         # CI: ShellCheck, niri validate, проверка темы Telegram
+├── assets/                    # Скриншоты и обои от предыдущего сетапа
 ├── config/
 │   ├── niri/                  # Конфиг композитора, сочетания клавиш и скрипты
-│   ├── noctalia/              # Панель, меню, палитры и обои
+│   ├── noctalia/              # Панель, меню, палитры, обои и шаблоны цветов
 │   ├── kitty/                 # Терминал
-│   ├── fish/                  # Цвета оболочки и настройки Pure
+│   ├── fish/                  # Настройки оболочки и отрендеренные цвета
 │   ├── gtk-3.0/               # Оформление GTK 3
 │   ├── gtk-4.0/               # Оформление GTK 4
+│   ├── qt6ct/                 # Заготовка настроек Qt
 │   ├── btop/                  # Системный монитор
+│   ├── cava/                  # Аудиовизуализатор
+│   ├── mpv/                   # Медиаплеер
+│   ├── helium-material2/      # Тема браузера Helium
 │   └── fastfetch/             # Сведения о системе
-├── home/vimrc                 # Устанавливается как ~/.vimrc
+├── home/                      # ~/.vimrc, цвета Vim и курсор по умолчанию
 ├── state/noctalia/            # Шаблон настроек темы и обоев
 ├── themes/telegram/           # Тема Telegram и её исходники
 ├── install.sh
+├── sync.sh                    # Переносит правки из системы обратно в репозиторий
 ├── LICENSE
 ├── README.md
 └── README.ru.md
