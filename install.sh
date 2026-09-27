@@ -168,11 +168,13 @@ if $INSTALL_PACKAGES; then
         ttf-roboto ttf-roboto-mono-nerd
 fi
 
-for app in niri noctalia kitty fish fastfetch btop cava mpv gtk-3.0 gtk-4.0; do
+for app in niri noctalia kitty fish fastfetch btop cava mpv gtk-3.0 gtk-4.0 helium-material2; do
     install_tree "${SCRIPT_DIR}/config/${app}" "${CONFIG_HOME}/${app}"
 done
 
 install_file "${SCRIPT_DIR}/home/vimrc" "${TARGET_HOME}/.vimrc"
+# Rendered fallback; Noctalia rewrites it from its vim template.
+install_file "${SCRIPT_DIR}/home/vim/colors/noctalia.vim" "${TARGET_HOME}/.vim/colors/noctalia.vim"
 install_cursor
 install_noctalia_state
 

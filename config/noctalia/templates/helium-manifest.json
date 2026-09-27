@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Material 2 (Noctalia)",
+  "version": "1.0.0",
+  "description": "Noctalia palette with a tonal active tab to match the Material 2 desktop. Colors only: no scripts, permissions, or network access.",
+  "theme": {
+    "colors": {
+      "frame": [{{colors.terminal_background.default.red}}, {{colors.terminal_background.default.green}}, {{colors.terminal_background.default.blue}}],
+      "frame_inactive": [{{colors.surface.default.red}}, {{colors.surface.default.green}}, {{colors.surface.default.blue}}],
+      "frame_incognito": [{{colors.terminal_background.default.red}}, {{colors.terminal_background.default.green}}, {{colors.terminal_background.default.blue}}],
+      "frame_incognito_inactive": [{{colors.surface.default.red}}, {{colors.surface.default.green}}, {{colors.surface.default.blue}}],
+      "background_tab": [{{colors.surface.default.red}}, {{colors.surface.default.green}}, {{colors.surface.default.blue}}],
+      "background_tab_inactive": [{{colors.surface.default.red}}, {{colors.surface.default.green}}, {{colors.surface.default.blue}}],
+      "toolbar": [{{colors.terminal_selection_bg.default.red}}, {{colors.terminal_selection_bg.default.green}}, {{colors.terminal_selection_bg.default.blue}}],
+      "toolbar_text": [{{colors.on_surface.default.red}}, {{colors.on_surface.default.green}}, {{colors.on_surface.default.blue}}],
+      "toolbar_button_icon": [{{colors.on_surface_variant.default.red}}, {{colors.on_surface_variant.default.green}}, {{colors.on_surface_variant.default.blue}}],
+      "tab_text": [{{colors.on_surface.default.red}}, {{colors.on_surface.default.green}}, {{colors.on_surface.default.blue}}],
+      "tab_background_text": [{{colors.terminal_bright_black.default.red}}, {{colors.terminal_bright_black.default.green}}, {{colors.terminal_bright_black.default.blue}}],
+      "tab_background_text_inactive": [{{colors.terminal_bright_black.default.red}}, {{colors.terminal_bright_black.default.green}}, {{colors.terminal_bright_black.default.blue}}],
+      "bookmark_text": [{{colors.on_surface.default.red}}, {{colors.on_surface.default.green}}, {{colors.on_surface.default.blue}}],
+      "omnibox_background": [{{colors.surface.default.red}}, {{colors.surface.default.green}}, {{colors.surface.default.blue}}],
+      "omnibox_text": [{{colors.on_surface.default.red}}, {{colors.on_surface.default.green}}, {{colors.on_surface.default.blue}}],
+      "ntp_background": [{{colors.terminal_background.default.red}}, {{colors.terminal_background.default.green}}, {{colors.terminal_background.default.blue}}],
+      "ntp_text": [{{colors.on_surface.default.red}}, {{colors.on_surface.default.green}}, {{colors.on_surface.default.blue}}],
+      "ntp_link": [{{colors.primary.default.red}}, {{colors.primary.default.green}}, {{colors.primary.default.blue}}],
+      "ntp_header": [{{colors.primary.default.red}}, {{colors.primary.default.green}}, {{colors.primary.default.blue}}],
+      "button_background": [0, 0, 0, 0]
+    }
+  }
+}

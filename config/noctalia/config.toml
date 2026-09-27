@@ -206,3 +206,27 @@ enabled = true
 [theme.templates.user.mpv]
 input_path = "$XDG_CONFIG_HOME/noctalia/templates/mpv.conf"
 output_path = "$XDG_CONFIG_HOME/mpv/noctalia.conf"
+
+# GTK 3 and 4: Material 2 shapes and elevation on top of the builtin noctalia.css.
+[theme.templates.user.gtk3-material2]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/gtk3-material2.css"
+output_path = "$XDG_CONFIG_HOME/gtk-3.0/material2.css"
+
+[theme.templates.user.gtk4-material2]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/gtk4-material2.css"
+output_path = "$XDG_CONFIG_HOME/gtk-4.0/material2.css"
+
+# fish and Pure prompt colors (conf.d runs before config.fish).
+[theme.templates.user.fish]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/fish-colors.fish"
+output_path = "$XDG_CONFIG_HOME/fish/conf.d/noctalia-colors.fish"
+
+# Vim colorscheme, loaded by ~/.vimrc with `colorscheme noctalia`.
+[theme.templates.user.vim]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/vim-colors.vim"
+output_path = "~/.vim/colors/noctalia.vim"
+
+# Helium browser theme: reload it on the extensions page after a change.
+[theme.templates.user.helium]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/helium-manifest.json"
+output_path = "$XDG_CONFIG_HOME/helium-material2/manifest.json"

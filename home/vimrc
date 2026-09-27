@@ -1,5 +1,4 @@
 " Lean Material 2 Vim setup with no plugin dependency.
-set background=dark
 set termguicolors
 set number
 set relativenumber
@@ -17,24 +16,6 @@ set shiftwidth=4
 set softtabstop=4
 set tabstop=4
 
-highlight Normal       guifg=#e8eaed guibg=#121212
-highlight NormalNC     guifg=#bdc1c6 guibg=#121212
-highlight CursorLine                  guibg=#242424
-highlight LineNr       guifg=#80868b guibg=#121212
-highlight CursorLineNr guifg=#fdd663 guibg=#242424 gui=bold
-highlight Comment      guifg=#9aa0a6 gui=italic
-highlight Constant     guifg=#c58af9
-highlight String       guifg=#81c995
-highlight Identifier   guifg=#8ab4f8
-highlight Statement    guifg=#f28b82 gui=bold
-highlight PreProc      guifg=#8ab4f8
-highlight Type         guifg=#fdd663
-highlight Special      guifg=#78d9ec
-highlight Visual       guifg=#082613 guibg=#25e075
-highlight Search       guifg=#121212 guibg=#fdd663
-highlight StatusLine   guifg=#082613 guibg=#25e075 gui=bold
-highlight StatusLineNC guifg=#bdc1c6 guibg=#2c2c2c
-highlight VertSplit    guifg=#2c2c2c guibg=#121212
-highlight ErrorMsg     guifg=#f28b82 guibg=#121212 gui=bold
-highlight Pmenu        guifg=#e8eaed guibg=#2c2c2c
-highlight PmenuSel     guifg=#082613 guibg=#25e075 gui=bold
+" Colors are rendered from the Noctalia palette into ~/.vim/colors/noctalia.vim;
+" the colorscheme also sets 'background' to follow the dark or light mode.
+silent! colorscheme noctalia
