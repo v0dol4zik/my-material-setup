@@ -27,6 +27,20 @@
         default-window-height { fixed 920; }
     }
 
+    // Browser picture-in-picture players (Chromium and Firefox titles).
+    window-rule {
+        match title="^Picture[ -]in[ -][Pp]icture$"
+        open-floating true
+        default-floating-position x=24 y=24 relative-to="bottom-right"
+    }
+
+    // Chats stay visible on screen and in screenshots, but are hidden
+    // from screencasts and screen sharing.
+    window-rule {
+        match app-id=r#"^org\.telegram\.desktop$"#
+        block-out-from "screencast"
+    }
+
     // if you use steam you will probably like these
     window-rule {
         match app-id="steam"
@@ -51,4 +65,10 @@
           xray false
           blur true
         }
+    }
+
+    // Notification popups can carry private text: hide them from screencasts.
+    layer-rule {
+        match namespace="^noctalia-notification$"
+        block-out-from "screencast"
     }

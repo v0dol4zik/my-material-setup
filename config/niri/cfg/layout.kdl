@@ -11,7 +11,7 @@
         }
 
         focus-ring {
-            width 2
+            width 1 // Elevation marks focus; the ring only outlines it
         }
 
         shadow {
@@ -19,7 +19,8 @@
             softness 18
             spread 0
             offset x=0 y=4
-            color "#00000055"
+            color "#00000066"          // Focused window: raised
+            inactive-color "#00000030" // Others sit lower
         }
 
         struts {}
