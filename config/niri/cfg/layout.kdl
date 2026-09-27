@@ -11,7 +11,7 @@
         }
 
         focus-ring {
-            width 1 // Elevation marks focus; the ring only outlines it
+            width 2
         }
 
         shadow {

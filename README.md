@@ -17,7 +17,7 @@ The `#25E075` accent is sampled from the green geometric wallpaper. It ties toge
 
 | Component | Configuration |
 |---|---|
-| Windows | Niri: 4 px corner radius, 12 px gaps, 1 px focus ring, and shadows for elevation |
+| Windows | Niri: 4 px corner radius, 12 px gaps, 2 px focus ring, and shadows for elevation |
 | Motion | Material 2 easing: windows grow from 90% and fade in, and close faster than they open |
 | Desktop shell | Noctalia 5.1 with TOML configuration |
 | Panel | At the top, flush with the screen edges, 40 px tall, 78% opacity |
