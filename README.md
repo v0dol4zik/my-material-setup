@@ -30,12 +30,12 @@ The `#25E075` accent is sampled from the green geometric wallpaper. It ties toge
 | Cursor | Bibata Modern Classic, size 20 |
 | Utilities | Fastfetch, Btop, Cava, and Vim, all in palette colors |
 | Media | mpv with the stock OSC in palette colors and shortcuts that also work on the Russian layout |
-| Browser and editors | A Helium theme, plus Zed and Discord themes from Noctalia community templates |
+| Editors and chat | Zed and Discord themes from Noctalia community templates |
 | Telegram Desktop | A separate Material 2 Green theme for manual import |
 
 Notifications are compact, with at most two visible at once. The lock screen uses a dimmed wallpaper and a small login box with keyboard layout and Caps Lock indicators. The session locks after 10 minutes of inactivity, and the screen turns off after 20 minutes.
 
-Keyboard shortcuts launch **Helium Browser** and **Thunar**. The control center is configured to open near the point you click on the panel.
+Keyboard shortcuts launch **Helium Browser** and **Thunar**. Helium keeps its default appearance. The control center is configured to open near the point you click on the panel.
 
 ### Palette
 
@@ -93,7 +93,7 @@ Run the script as your regular user. It invokes `sudo pacman` when installing pa
 
 ### What the installer changes
 
-- Copies the Niri, Noctalia, Kitty, Fish, Fastfetch, Btop, Cava, mpv, GTK 3/4, and Helium theme configurations to `~/.config`.
+- Copies the Niri, Noctalia, Kitty, Fish, Fastfetch, Btop, Cava, mpv, and GTK 3/4 configurations to `~/.config`.
 - Installs `home/vimrc` as `~/.vimrc` and the Vim color scheme to `~/.vim/colors`.
 - Downloads Bibata Modern Classic `v2.0.7` to `~/.icons` and makes it the default cursor in `~/.icons/default`.
 - Writes `~/.local/state/noctalia/settings.toml` with the green palette, wallpaper, and color templates, and `~/.config/qt6ct/qt6ct.conf`.
@@ -167,7 +167,6 @@ Paths in the table are relative to the repository. For an installed setup, edit 
 | Fish and Pure colors | `config/noctalia/templates/fish-colors.fish` |
 | Pure prompt options | `config/fish/config.fish` |
 | Vim colors | `config/noctalia/templates/vim-colors.vim` |
-| Helium theme | `config/noctalia/templates/helium-manifest.json` |
 | Keyboard shortcuts and layouts | `config/niri/cfg/keybinds.kdl`, `config/niri/cfg/input.kdl` |
 | Animations | `config/niri/cfg/animation.kdl` |
 | Window rules and capture privacy | `config/niri/cfg/rules.kdl` |
@@ -187,7 +186,7 @@ Running the installer again reapplies the palette, wallpaper, and settings from 
 
 ### Color templates
 
-The files in `config/noctalia/templates` are Noctalia user templates, registered in `config.toml` under `[theme.templates.user.<id>]`. Noctalia renders them on every palette or mode change: the GTK shapes (`material2.css`), Fish and Pure colors, the Vim color scheme, the Helium theme, and mpv colors. Edit the template, not the rendered file, because the next render overwrites it. The rendered copies in the repository are the dark Material2-Green output, kept as a fallback for the first start.
+The files in `config/noctalia/templates` are Noctalia user templates, registered in `config.toml` under `[theme.templates.user.<id>]`. Noctalia renders them on every palette or mode change: the GTK shapes (`material2.css`), Fish and Pure colors, the Vim color scheme, and mpv colors. Edit the template, not the rendered file, because the next render overwrites it. The rendered copies in the repository are the dark Material2-Green output, kept as a fallback for the first start.
 
 To add a template of your own, put it next to the others and register it:
 
@@ -204,9 +203,7 @@ noctalia msg config-reload
 noctalia msg templates-apply
 ```
 
-### Helium, Zed, and Discord
-
-The Helium theme is installed to `~/.config/helium-material2`. Open `chrome://extensions`, turn on **Developer mode**, choose **Load unpacked**, and select that folder. Noctalia rewrites the theme when the palette or mode changes, but Helium only reads it again when you press the reload button on the extension.
+### Zed and Discord
 
 The Zed community template writes `~/.config/zed/themes/noctalia.json`. To follow the system mode, add this to `~/.config/zed/settings.json`:
 
@@ -260,7 +257,6 @@ The theme includes dark message bubbles, green accents, and a subtle geometric c
 │   ├── btop/                  # System monitor
 │   ├── cava/                  # Audio visualizer
 │   ├── mpv/                   # Media player
-│   ├── helium-material2/      # Helium browser theme
 │   └── fastfetch/             # System information
 ├── home/                      # ~/.vimrc, Vim colors, and the default cursor
 ├── state/noctalia/            # Theme and wallpaper settings template

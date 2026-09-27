@@ -225,8 +225,3 @@ output_path = "$XDG_CONFIG_HOME/fish/conf.d/noctalia-colors.fish"
 [theme.templates.user.vim]
 input_path = "$XDG_CONFIG_HOME/noctalia/templates/vim-colors.vim"
 output_path = "~/.vim/colors/noctalia.vim"
-
-# Helium browser theme: reload it on the extensions page after a change.
-[theme.templates.user.helium]
-input_path = "$XDG_CONFIG_HOME/noctalia/templates/helium-manifest.json"
-output_path = "$XDG_CONFIG_HOME/helium-material2/manifest.json"

@@ -65,7 +65,6 @@ is_rendered() {
         config/*/noctalia.css|config/*/noctalia.conf|config/*/noctalia.kdl) return 0 ;;
         config/btop/themes/noctalia.theme|config/cava/themes/noctalia) return 0 ;;
         config/gtk-*/material2.css|config/fish/conf.d/noctalia-colors.fish) return 0 ;;
-        config/helium-material2/manifest.json) return 0 ;;
         home/vim/colors/noctalia.vim) return 0 ;;
     esac
     return 1

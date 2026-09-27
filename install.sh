@@ -190,7 +190,7 @@ if $INSTALL_PACKAGES; then
         xdg-desktop-portal-gnome xdg-desktop-portal-gtk
 fi
 
-for app in niri noctalia kitty fish fastfetch btop cava mpv gtk-3.0 gtk-4.0 helium-material2; do
+for app in niri noctalia kitty fish fastfetch btop cava mpv gtk-3.0 gtk-4.0; do
     install_tree "${SCRIPT_DIR}/config/${app}" "${CONFIG_HOME}/${app}"
 done
 

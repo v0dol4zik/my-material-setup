@@ -30,12 +30,12 @@
 | Курсор | Bibata Modern Classic, размер 20 |
 | Утилиты | Fastfetch, Btop, Cava и Vim в цветах палитры |
 | Медиа | mpv со штатным OSC в цветах палитры и горячими клавишами, работающими и на русской раскладке |
-| Браузер и редакторы | Тема Helium, а также темы Zed и Discord из community-шаблонов Noctalia |
+| Редактор и мессенджер | Темы Zed и Discord из community-шаблонов Noctalia |
 | Telegram Desktop | Отдельная тема Material 2 Green для ручного импорта |
 
 Уведомления компактные, одновременно видны не более двух. Экран блокировки использует затемнённые обои и небольшое поле входа с индикаторами раскладки и Caps Lock. После 10 минут бездействия включается блокировка, после 20 минут гаснет экран.
 
-Горячие клавиши запускают **Helium Browser** и **Thunar**. Центр управления настроен открываться рядом с местом нажатия на панели.
+Горячие клавиши запускают **Helium Browser** и **Thunar**. Helium сохраняет стандартное оформление. Центр управления настроен открываться рядом с местом нажатия на панели.
 
 ### Палитра
 
@@ -93,7 +93,7 @@ bash ./install.sh
 
 ### Что меняет установщик
 
-- Копирует конфиги Niri, Noctalia, Kitty, Fish, Fastfetch, Btop, Cava, mpv, GTK 3/4 и тему Helium в `~/.config`.
+- Копирует конфиги Niri, Noctalia, Kitty, Fish, Fastfetch, Btop, Cava, mpv и GTK 3/4 в `~/.config`.
 - Устанавливает `home/vimrc` как `~/.vimrc`, а цветовую схему Vim — в `~/.vim/colors`.
 - Загружает Bibata Modern Classic `v2.0.7` в `~/.icons` и делает его курсором по умолчанию в `~/.icons/default`.
 - Записывает `~/.local/state/noctalia/settings.toml` с зелёной палитрой, обоями и шаблонами цветов, а также `~/.config/qt6ct/qt6ct.conf`.
@@ -167,7 +167,6 @@ noctalia config validate
 | Цвета Fish и Pure | `config/noctalia/templates/fish-colors.fish` |
 | Настройки промпта Pure | `config/fish/config.fish` |
 | Цвета Vim | `config/noctalia/templates/vim-colors.vim` |
-| Тему Helium | `config/noctalia/templates/helium-manifest.json` |
 | Горячие клавиши и раскладку | `config/niri/cfg/keybinds.kdl`, `config/niri/cfg/input.kdl` |
 | Анимации | `config/niri/cfg/animation.kdl` |
 | Правила окон и скрытие при записи экрана | `config/niri/cfg/rules.kdl` |
@@ -187,7 +186,7 @@ niri msg outputs
 
 ### Шаблоны цветов
 
-Файлы в `config/noctalia/templates` — пользовательские шаблоны Noctalia, подключённые в `config.toml` секциями `[theme.templates.user.<id>]`. Noctalia рендерит их при каждой смене палитры или режима: форму элементов GTK (`material2.css`), цвета Fish и Pure, цветовую схему Vim, тему Helium и цвета mpv. Редактируйте шаблон, а не результат: следующий рендер его перезапишет. Отрендеренные копии в репозитории — тёмный вариант Material2-Green, запасной на случай первого запуска.
+Файлы в `config/noctalia/templates` — пользовательские шаблоны Noctalia, подключённые в `config.toml` секциями `[theme.templates.user.<id>]`. Noctalia рендерит их при каждой смене палитры или режима: форму элементов GTK (`material2.css`), цвета Fish и Pure, цветовую схему Vim и цвета mpv. Редактируйте шаблон, а не результат: следующий рендер его перезапишет. Отрендеренные копии в репозитории — тёмный вариант Material2-Green, запасной на случай первого запуска.
 
 Чтобы добавить свой шаблон, положите его рядом с остальными и подключите:
 
@@ -204,9 +203,7 @@ noctalia msg config-reload
 noctalia msg templates-apply
 ```
 
-### Helium, Zed и Discord
-
-Тема Helium устанавливается в `~/.config/helium-material2`. Откройте `chrome://extensions`, включите **режим разработчика**, нажмите **Загрузить распакованное расширение** и выберите эту папку. Noctalia перезаписывает тему при смене палитры или режима, но Helium перечитывает её только после нажатия кнопки перезагрузки у расширения.
+### Zed и Discord
 
 Community-шаблон Zed пишет `~/.config/zed/themes/noctalia.json`. Чтобы тема следовала системному режиму, добавьте в `~/.config/zed/settings.json`:
 
@@ -260,7 +257,6 @@ Community-шаблон Zed пишет `~/.config/zed/themes/noctalia.json`. Чт
 │   ├── btop/                  # Системный монитор
 │   ├── cava/                  # Аудиовизуализатор
 │   ├── mpv/                   # Медиаплеер
-│   ├── helium-material2/      # Тема браузера Helium
 │   └── fastfetch/             # Сведения о системе
 ├── home/                      # ~/.vimrc, цвета Vim и курсор по умолчанию
 ├── state/noctalia/            # Шаблон настроек темы и обоев
