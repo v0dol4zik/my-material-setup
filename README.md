@@ -146,7 +146,6 @@ Then log out and log into Niri. Noctalia is launched by Niri's startup configura
 | `Mod+Shift+arrow keys` | Move focus between monitors |
 | `Mod+Ctrl+Shift+arrow keys` | Move the column to another monitor |
 | `Ctrl+Shift+1` / `2` / `3` | Screenshot of an area / screen / window |
-| `Print` | Screenshot with annotations (Noctalia) |
 | `Alt+Shift` | Switch between US / RU keyboard layouts |
 | `Mod+Shift+Esc` | Show the keyboard shortcut help |
 
