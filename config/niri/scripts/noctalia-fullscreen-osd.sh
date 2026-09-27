@@ -4,8 +4,20 @@
 # area in normal mode, but release it while the focused window is fullscreen so
 # overlay OSDs can anchor to the physical top edge.
 bar_mode=reserved
+noctalia_pid=""
 
 sync_bar_reservation() {
+    local pid
+
+    # A restarted Noctalia starts with the bar reserved again; without this the
+    # next toggle would flip it the wrong way.
+    pid="$(pgrep -xo noctalia || true)"
+    if [[ "$pid" != "$noctalia_pid" ]]; then
+        noctalia_pid=$pid
+        bar_mode=reserved
+    fi
+    [[ -n "$pid" ]] || return 0
+
     if niri msg -j focused-window 2>/dev/null | grep -q '"is_fullscreen":true'; then
         wanted_mode=overlay
     else
