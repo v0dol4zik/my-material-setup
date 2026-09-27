@@ -53,3 +53,6 @@ set -g pure_symbol_exit_status_prefix '!'
 # Pure measures this threshold in seconds, not milliseconds.
 set -g pure_threshold_command_duration 5
 set -g pure_truncate_prompt_current_directory_keeps 3
+
+# User-installed commands; fish_add_path skips entries that are already there.
+fish_add_path -g ~/.local/bin

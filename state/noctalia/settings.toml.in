@@ -7,7 +7,11 @@ mode = "dark"
 shell_mode = "follow"
 
     [theme.templates]
-    builtin_ids = [ "btop", "gtk3", "gtk4", "kitty", "niri", "qt" ]
+    builtin_ids = [ "btop", "cava", "gtk3", "gtk4", "kitty", "niri", "qt" ]
+    community_ids = [ "discord", "zed" ]
+
+[plugins]
+enabled = [ "noctalia/bongocat" ]
 
 [wallpaper.default]
 path = "@CONFIG_HOME@/noctalia/wallpapers/material2-green.jpg"

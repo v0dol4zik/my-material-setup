@@ -52,8 +52,12 @@ hover_highlight = true
 # One translucent surface; no extra opaque capsule around system widgets.
 capsule = false
 start = [ "launcher", "workspaces" ]
-center = [ "clock" ]
+center = [ "clock", "cat" ]
 end = [ "tray", "notifications", "network", "volume", "battery", "control-center" ]
+
+# Bongo Cat from the official plugin source (enabled in settings.toml).
+[widget.cat]
+type = "noctalia/bongocat:cat"
 
 [widget.workspaces]
 style = "minimal"
@@ -194,3 +198,11 @@ enabled = true
 timeout = 1200
 action = "screen_off"
 enabled = true
+
+# User templates: Noctalia renders them on every palette or mode change.
+# Edit the files in noctalia/templates, not the generated output.
+
+# mpv: OSC, OSD, subtitle and menu colors.
+[theme.templates.user.mpv]
+input_path = "$XDG_CONFIG_HOME/noctalia/templates/mpv.conf"
+output_path = "$XDG_CONFIG_HOME/mpv/noctalia.conf"

@@ -168,7 +168,7 @@ if $INSTALL_PACKAGES; then
         ttf-roboto ttf-roboto-mono-nerd
 fi
 
-for app in niri noctalia kitty fish fastfetch btop gtk-3.0 gtk-4.0; do
+for app in niri noctalia kitty fish fastfetch btop cava mpv gtk-3.0 gtk-4.0; do
     install_tree "${SCRIPT_DIR}/config/${app}" "${CONFIG_HOME}/${app}"
 done
 

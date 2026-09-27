@@ -1,0 +1,3 @@
+[color]
+# Colors come from the Noctalia cava template (~/.config/cava/themes/noctalia).
+theme = "noctalia"
