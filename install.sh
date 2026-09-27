@@ -93,13 +93,14 @@ install_file() {
     run install -Dm644 -- "$source" "$target"
 }
 
-install_noctalia_state() {
-    local source="${SCRIPT_DIR}/state/noctalia/settings.toml.in"
-    local target="${STATE_HOME}/noctalia/settings.toml"
+render_file() {
+    local source="$1"
+    local target="$2"
     local rendered
     local line
     local config_toml
 
+    [[ -f "$source" ]] || die "missing source file: $source"
     backup_target "$target"
     log "render ${target#${TARGET_HOME}/}"
 
@@ -112,7 +113,8 @@ install_noctalia_state() {
     [[ -n "$rendered" && -f "$rendered" ]] || die "failed to create temporary file"
     trap 'rm -f -- "${rendered:-}"' RETURN
 
-    # Escape the config directory as a TOML double-quoted string.
+    # Escape the config directory as a TOML double-quoted string; INI files
+    # get the same value, which is unchanged for ordinary paths.
     config_toml="${CONFIG_HOME//\\/\\\\}"
     config_toml="${config_toml//\"/\\\"}"
     while IFS= read -r line || [[ -n "$line" ]]; do
@@ -159,13 +161,32 @@ install_cursor() {
     rm -rf -- "$temp_dir"
 }
 
+apply_interface_settings() {
+    local schema="org.gnome.desktop.interface"
+
+    # GTK apps read these instead of settings.ini when a settings daemon or
+    # portal is running, and tools like nwg-look overwrite them.
+    if ! command -v gsettings >/dev/null 2>&1; then
+        log "gsettings not found, skip ${schema}"
+        return 0
+    fi
+
+    log "set cursor, icon and font keys in ${schema}"
+    run gsettings set "$schema" cursor-theme 'Bibata-Modern-Classic'
+    run gsettings set "$schema" cursor-size 20
+    run gsettings set "$schema" icon-theme 'Papirus-Dark'
+    run gsettings set "$schema" font-name 'Roboto 11'
+    run gsettings set "$schema" monospace-font-name 'RobotoMono Nerd Font 11'
+}
+
 if $INSTALL_PACKAGES; then
     command -v pacman >/dev/null 2>&1 || die "--install-packages requires pacman"
     log "installing packages"
     run sudo pacman -S --needed \
         niri noctalia kitty fish fish-pure-prompt fish-autopair \
-        fastfetch btop vim papirus-icon-theme adw-gtk-theme \
-        ttf-roboto ttf-roboto-mono-nerd
+        fastfetch btop cava mpv vim papirus-icon-theme adw-gtk-theme qt6ct \
+        ttf-roboto ttf-roboto-mono-nerd xwayland-satellite \
+        xdg-desktop-portal-gnome xdg-desktop-portal-gtk
 fi
 
 for app in niri noctalia kitty fish fastfetch btop cava mpv gtk-3.0 gtk-4.0 helium-material2; do
@@ -176,7 +197,11 @@ install_file "${SCRIPT_DIR}/home/vimrc" "${TARGET_HOME}/.vimrc"
 # Rendered fallback; Noctalia rewrites it from its vim template.
 install_file "${SCRIPT_DIR}/home/vim/colors/noctalia.vim" "${TARGET_HOME}/.vim/colors/noctalia.vim"
 install_cursor
-install_noctalia_state
+# XWayland and toolkits that ignore XCURSOR_THEME fall back to the "default" theme.
+install_file "${SCRIPT_DIR}/home/icons/default/index.theme" "${TARGET_HOME}/.icons/default/index.theme"
+apply_interface_settings
+render_file "${SCRIPT_DIR}/state/noctalia/settings.toml.in" "${STATE_HOME}/noctalia/settings.toml"
+render_file "${SCRIPT_DIR}/config/qt6ct/qt6ct.conf.in" "${CONFIG_HOME}/qt6ct/qt6ct.conf"
 
 if $DRY_RUN; then
     log "dry run complete; no files changed"
